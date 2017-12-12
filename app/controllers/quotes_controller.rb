@@ -2,6 +2,10 @@ class QuotesController < ApplicationController
 
   def index
     @quotes = Quote.all
+    if params[:name]
+      name = params[:name]
+      @quotes = Quote.search(name)
+    end
     json_response(@quotes)
   end
 

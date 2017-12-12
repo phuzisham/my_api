@@ -12,4 +12,9 @@ describe "get all quotes route", :type => :request do
   it 'returns status code 200' do
     expect(response).to have_http_status(:success)
   end
+
+  it 'returns 404 if id not found' do
+    get '/quotes/30'
+    expect(response).to have_http_status(404)
+  end
 end
